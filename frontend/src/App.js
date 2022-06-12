@@ -1,21 +1,26 @@
 import React from 'react'
+import {BrowserRouter as Routes, Route} from 'react-router-dom'
+
 import Header from './components/Header'
  import Footer from './components/Footer'
  import {Container} from 'react-bootstrap'
  import HomeScreen from './components/screen/HomeScreen'
+ import ProductScreen from './components/screen/ProductScreen'
+
 
  const App=()=> {
   return (
-    <div>
+    <Routes>
       <Header />
       <main className="py-3"> {/* py-3 is padding */} 
         <Container >
-          <h1>Welcome to pro shop</h1>
-          <HomeScreen />
+          <Route path='/' component={HomeScreen} exact />
+          <Route path='/product/:id' component={ProductScreen} />
+
         </Container>
       </main>
       <Footer />
-    </div>
+    </Routes>
   );
 }
 
