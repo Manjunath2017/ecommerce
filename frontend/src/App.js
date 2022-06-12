@@ -7,6 +7,7 @@ import Header from './components/Header'
  import HomeScreen from './components/screen/HomeScreen'
  import ProductScreen from './components/screen/ProductScreen'
 
+ //varient='flush' removes outer border and rounded corner 
 
  const App=()=> {
   return (
