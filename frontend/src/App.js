@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter as Routes, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 import Header from './components/Header'
  import Footer from './components/Footer'
@@ -11,17 +11,16 @@ import Header from './components/Header'
 
  const App=()=> {
   return (
-    <Routes>
+    <Router>
       <Header />
       <main className="py-3"> {/* py-3 is padding */} 
         <Container >
           <Route path='/' component={HomeScreen} exact />
           <Route path='/product/:id' component={ProductScreen} />
-
         </Container>
       </main>
       <Footer />
-    </Routes>
+    </Router>
   );
 }
 
