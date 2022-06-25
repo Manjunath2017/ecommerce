@@ -1,5 +1,6 @@
 import React from 'react'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+// import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Header from './components/Header'
  import Footer from './components/Footer'
@@ -9,19 +10,21 @@ import Header from './components/Header'
 
  //varient='flush' removes outer border and rounded corner 
 
- const App=()=> {
+ const App = () => {
   return (
     <Router>
       <Header />
-      <main className="py-3"> {/* py-3 is padding */} 
-        <Container >
-          <Route path='/' component={HomeScreen} exact />
-          <Route path='/product/:id' component={ProductScreen} />
+      <main className='py-3'>
+        <Container>
+          <Switch>
+            <Route path='/' component={HomeScreen} exact />
+            <Route path='/product/:id' component={ProductScreen} />
+          </Switch>
         </Container>
       </main>
       <Footer />
     </Router>
-  );
+  )
 }
 
 export default App;
