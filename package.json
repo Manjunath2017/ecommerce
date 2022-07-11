@@ -1,0 +1,22 @@
+{
+  "name": "ecommerce",
+  "version": "1.0.0",
+  "description": "MERN stack shopping cart app",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Manjunath2017/ecommerce.git"
+  },
+  "author": "Manjunath M Jadhav",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Manjunath2017/ecommerce/issues"
+  },
+  "homepage": "https://github.com/Manjunath2017/ecommerce#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
