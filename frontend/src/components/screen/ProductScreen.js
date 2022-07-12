@@ -1,13 +1,25 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import {Row, Col, Image, ListGroup, Card, Button} from 'react-bootstrap'
 import Rating from '../Rating'
-import products from '../../products'
+// import products from '../../products'
+import axios from 'axios'
 
  
 const ProductScreen =({match})=>{
-  const singleProduct=products.find(item =>item._id===match.params.id )
-console.log('products', singleProduct)
+// const product=products.find(item =>item._id===match.params.id )
+
+  const [product, setProduct]=useState({})
+
+  useEffect(()=>{
+    const fetchProduct=async()=>{
+      const {data}= await axios.get(`/api/product/${match.params.id}`)
+      
+      setProduct(data)
+    }
+
+    fetchProduct()
+  },[])
   return( 
   <>
 {/* brand: "Apple"
@@ -24,19 +36,19 @@ rating: 4.5 */}
     <Link className='btn btn-light my-3' to='/'>Go Back </Link> 
     <Row>
       <Col md={6}>
-        <Image src={singleProduct.image} alt={singleProduct.name} fluid/> 
+        <Image src={product.image} alt={product.name} fluid/> 
       </Col>
       <Col md={3}>
         <ListGroup varient='fluid'>
           <ListGroup.Item>
-            <h3>{singleProduct.name}</h3>
+            <h3>{product.name}</h3>
           </ListGroup.Item>
           <ListGroup.Item>
-            <Rating value={singleProduct.rating} text={`${singleProduct.numReviews} reviews`} />
+            <Rating value={product.rating} text={`${product.numReviews} reviews`} />
           </ListGroup.Item>
           <ListGroup.Item>
-            <ListGroup.Item>Price: ${singleProduct.price}</ListGroup.Item>
-            <ListGroup.Item>Description: {singleProduct.description}</ListGroup.Item>
+            <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
+            <ListGroup.Item>Description: {product.description}</ListGroup.Item>
           </ListGroup.Item>
         </ListGroup>
       </Col>
@@ -46,17 +58,17 @@ rating: 4.5 */}
             <ListGroup.Item>
               <Row>
                 <Col>Price:</Col>
-                <Col> <strong>&#8377;{singleProduct.price}</strong></Col>
+                <Col> <strong>&#8377;{product.price}</strong></Col>
               </Row>
             </ListGroup.Item>
             <ListGroup.Item>
               <Row>
                 <Col>Status:</Col>
-                <Col>{singleProduct.countInStock>0? 'In Stock':'Out Of Stock'}</Col>
+                <Col>{product.countInStock>0? 'In Stock':'Out Of Stock'}</Col>
               </Row>
             </ListGroup.Item>
             <ListGroup.Item>
-              <Button className='btn-block' type='button' disabled={singleProduct.countInStock===0}>Add To Cart</Button>
+              <Button className='btn-block' type='button' disabled={product.countInStock===0}>Add To Cart</Button>
             </ListGroup.Item>
           </ListGroup>
         </Card>
