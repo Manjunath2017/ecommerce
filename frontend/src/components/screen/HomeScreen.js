@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import {Row, Col} from 'react-bootstrap'
-import products from '../../products'
+// import products from '../../products'
 import Product from '../Product'
 import axios from 'axios'
 
@@ -8,9 +8,9 @@ import axios from 'axios'
 
 
 const HomeScreen =()=>{
-  // const [products, setProducts]=useState([])
+  const [products, setProducts]=useState([])
 
-/*   useEffect(()=>{
+  useEffect(()=>{
     const fetchProducts= async()=>{
       const {data}=await axios.get('/api/products')
 
@@ -18,7 +18,7 @@ const HomeScreen =()=>{
     } 
     
     fetchProducts()
-  },[]) */
+  },[])
 
   return( 
   <>
