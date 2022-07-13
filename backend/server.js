@@ -1,5 +1,7 @@
 const app=require('express')()
 const products=require('./data/products')
+const dotenv=require('dotenv').config({path:__dirname+'/./../.env'})
+
 app.get('/', (req, res)=>{
   res.send('API is,, running...')
 })
@@ -14,5 +16,6 @@ const product=products.find((obj) =>obj._id===id_no)
 res.json( product)
 })
 
-app.listen(5000, console.log('server running on port 5000'))
+const port=process.env.PORT || 3000
+app.listen(port, console.log(`server running in ${process.env.NODE_ENV} mode on port ${port}`))
 
