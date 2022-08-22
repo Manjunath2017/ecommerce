@@ -1,7 +1,10 @@
 const app=require('express')()
 const products=require('./data/products')
 const dotenv=require('dotenv').config({path:__dirname+'/./../.env'})
+const connectDB=require('./config/db')
 
+
+connectDB()
 app.get('/', (req, res)=>{
   res.send('API is,, running...')
 })
