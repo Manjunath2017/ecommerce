@@ -20,5 +20,6 @@ app.get('/api/products/:id_no', (req,res)=>{
 })
 
 const port=process.env.PORT || 3000
+console.log('port', port)
 app.listen(port, console.log(`server running in ${process.env.NODE_ENV} mode on port ${port}`))
 
